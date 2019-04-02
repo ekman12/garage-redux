@@ -4,12 +4,13 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import reduxPromise from 'redux-promise';
 import logger from 'redux-logger';
+import { reducer as formReducer } from 'redux-form';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createHistory as history } from 'history';
 
 import '../assets/stylesheets/application.scss';
 
-import App from './components/app';
+import CarsIndex from './containers/cars_index';
 
 import carsReducer from './reducers/cars_reducer';
 
@@ -18,8 +19,8 @@ const initialState = {
 };
 
 const reducers = combineReducers({
-  cars: carsReducer
-  // key: reducer
+  cars: carsReducer,
+  form: formReducer
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);
@@ -30,9 +31,15 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <App />
+        <Route path="/" exact component={CarsIndex} />
       </Switch>
     </Router>
   </Provider>,
   document.getElementById('root')
 );
+
+
+// STEPS TAKEN:
+
+// Terminal: yarn add redux-form@7.2.0
+// src/index.jsx Import // import { reducer as formReducer } from 'redux-form';

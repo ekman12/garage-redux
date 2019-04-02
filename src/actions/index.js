@@ -21,12 +21,7 @@ export function fetchCars() {
 }
 
 export function postCar(brand, model, owner, plate) {
-  const body = {
-    brand: brand,
-    model: model,
-    owner: owner,
-    plate: plate };
-
+  const body = { brand, model, owner, plate };
   const promise = fetch(URL, {
     method: 'POST',
     headers: {
