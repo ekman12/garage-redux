@@ -7,45 +7,58 @@ import { postCar } from '../actions';
 
 class CarsNew extends Component {
   onSubmit = (values) => {
-    this.props.createPost(values, (post) => {
+    this.props.postCar(values, (post) => {
       this.props.history.push('/');
       return post;
     });
   }
 
+  renderField(field) {
+    return (
+      <div className="form-group">
+        <label>{field.label}</label>
+        <input
+          className="form-control"
+          type={field.type}
+          {...field.input}
+        />
+      </div>
+    );
+  }
+
   renderForm() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <label htmlFor="brand">brand</label>
+        <label htmlFor="brand">Brand</label>
         <Field
           className="form-control"
-          label="brand"
+          label="Brand"
           name="brand"
-          component="textfield"
+          component="input"
           rows="8"
         />
-        <label htmlFor="model">model</label>
+        <label htmlFor="model">Model</label>
         <Field
           className="form-control"
-          label="model"
+          label="Model"
           name="model"
-          component="textfield"
+          component="input"
           rows="8"
         />
-        <label htmlFor="owner">owner</label>
+        <label htmlFor="owner">Owner</label>
         <Field
           className="form-control"
-          label="owner"
+          label="Owner"
           name="owner"
-          component="textfield"
+          component="input"
           rows="8"
         />
-        <label htmlFor="plate">plate</label>
+        <label htmlFor="plate">Plate</label>
         <Field
           className="form-control"
-          label="plate"
+          label="Plate"
           name="plate"
-          component="textfield"
+          component="input"
           rows="8"
         />
         <button className="btn btn-primary" type="submit"
