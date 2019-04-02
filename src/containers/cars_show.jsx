@@ -12,9 +12,18 @@ class CarsShow extends Component {
   }
 
   handleClick = () => {
-    console.log('handleClick')
-    this.props.deleteCar(this.props.idFromUrl);
+    this.props.deleteCar(this.props.idFromUrl, (post) => {
+      this.props.history.push('/');
+      return post;
+    });
   }
+
+  // onSubmit = (values) => {
+  //   this.props.postCar(values, (post) => {
+  //     this.props.history.push('/');
+  //     return post;
+  //   });
+  // }
 
   render() {
     if (this.props.car === undefined) {

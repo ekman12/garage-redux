@@ -16,7 +16,7 @@ export function fetchCars() {
 }
 
 export function fetchCar(id) {
-  const url = `https://wagon-garage-api.herokuapp.com/cars/${id}`
+  const url = `https://wagon-garage-api.herokuapp.com/cars/${id}`;
   const promise = fetch(url).then(r => r.json());
 
   return {
@@ -26,7 +26,6 @@ export function fetchCar(id) {
 }
 
 export function postCar(body, callback) {
-  // const body = { brand, model, owner, plate };
   const promise = fetch(URL, {
     method: 'POST',
     headers: {
@@ -43,16 +42,12 @@ export function postCar(body, callback) {
   };
 }
 
-export function deleteCar(id) {
-  const url = `https://wagon-garage-api.herokuapp.com/cars/${id}`
-
+export function deleteCar(id, callback) {
+  const url = `https://wagon-garage-api.herokuapp.com/cars/${id}`;
   const promise = fetch(url, {
     method: 'DELETE',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
   }).then(r => r.json())
+    .then(callback);
 
   return {
     type: DELETE_CAR,
