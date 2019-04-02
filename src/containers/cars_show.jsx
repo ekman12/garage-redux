@@ -18,13 +18,6 @@ class CarsShow extends Component {
     });
   }
 
-  // onSubmit = (values) => {
-  //   this.props.postCar(values, (post) => {
-  //     this.props.history.push('/');
-  //     return post;
-  //   });
-  // }
-
   render() {
     if (this.props.car === undefined) {
       return 'Searching for the car';
