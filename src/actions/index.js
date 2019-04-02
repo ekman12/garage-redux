@@ -2,6 +2,7 @@
 export const FETCH_CARS = 'FETCH_CARS';
 export const POST_CAR = 'POST_CAR';
 export const FETCH_CAR = 'FETCH_CAR';
+export const DELETE_CAR = 'DELETE_CAR';
 
 const URL = 'https://wagon-garage-api.herokuapp.com/tomek/cars';
 
@@ -13,7 +14,6 @@ export function fetchCars() {
     payload: promise
   };
 }
-
 
 export function fetchCar(id) {
   const url = `https://wagon-garage-api.herokuapp.com/cars/${id}`
@@ -39,6 +39,24 @@ export function postCar(body, callback) {
 
   return {
     type: POST_CAR,
-    payload: promise // Will be resolved by redux-promise
+    payload: promise
   };
 }
+
+export function deleteCar(id) {
+  const url = `https://wagon-garage-api.herokuapp.com/cars/${id}`
+
+  const promise = fetch(url, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }).then(r => r.json())
+
+  return {
+    type: DELETE_CAR,
+    payload: promise
+  };
+}
+
